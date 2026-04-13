@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchitectPro - Premium Architectural Services Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #c9a961;
+            --accent: #2d5a4d;
+            --light: #f8f6f3;
+            --white: #ffffff;
+            --gray: #6b6b6b;
+            --border: #e0ddd8;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.9rem 2rem;
+            border-radius: 0;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            height: 85vh;
+            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect fill="%23f8f6f3" width="800" height="800"/><path fill="%23c9a961" opacity="0.15" d="M0 0L400 400L0 800Z"/><path fill="%232d5a4d" opacity="0.08" d="M800 0L400 400L800 800Z"/></svg>');
+            background-size: cover;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Subscription Plans */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            padding: 3rem 2.5rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--shadow);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--secondary);
+            background: var(--light);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.4rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            background: var(--light);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 900px;
+            width: 100%;
+            padding: 3rem;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            background: var(--white);
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            padding-top: 90px;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: var(--light);
+            padding: 3rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .dashboard-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-nav {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem 3rem;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dashboard-nav button {
+            background: none;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .dashboard-nav button.active {
+            color: var(--primary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .dashboard-content {
+            padding: 3rem;
+        }
+
+        .dashboard-section {
+            display: none;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .stat-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--secondary);
+        }
+
+        .project-status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .project-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .project-status.completed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* File Upload */
+        .file-upload-area {
+            border: 3px dashed var(--border);
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .file-upload-area:hover {
+            border-color: var(--secondary);
+            background: var(--light);
+        }
+
+        .file-upload-area input {
+            display: none;
+        }
+
+        .uploaded-files {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .file-preview {
+            aspect-ratio: 1;
+            background: var(--light);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .file-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .file-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* Consultation */
+        .consultation-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            border-color: var(--secondary);
+            background: var(--light);
+        }
+
+        .calendar-day.selected {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-slot {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .time-slot:hover:not(.booked) {
+            border-color: var(--secondary);
+            background: var(--light);
+        }
+
+        .time-slot.selected {
+            background: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+        }
+
+        .time-slot.booked {
+            opacity: 0.3;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .payment-summary {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .payment-summary h3 {
+            margin-bottom: 1rem;
+        }
+
+        .payment-summary .price {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+
+            .dashboard-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .consultation-calendar {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ARCHITECT<span style="color: var(--secondary);">PRO</span></div>
+            <ul class="nav-links" id="mainNav">
+                <li><a href="#home" onclick="showHome()">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#" onclick="openModal('loginModal')">Login</a></li>
+                <li><a href="#" class="btn-primary" onclick="openModal('signupModal')">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Transform Your<br>Vision Into Reality</h1>
+                <p>Premium architectural services with end-to-end project management. Choose your subscription plan and experience seamless collaboration.</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn-primary">View Plans</a>
+                    <a href="#" class="btn-secondary" onclick="openModal('consultModal')">Book Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <div class="section-header">
+                <h2>Our Expertise</h2>
+                <p>Comprehensive architectural solutions for every project type</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Residential</div>
+                    <div class="portfolio-overlay">
+                        <h3>Residential Design</h3>
+                        <p>Villas, Apartments & Housing Complexes</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Commercial</div>
+                    <div class="portfolio-overlay">
+                        <h3>Commercial Projects</h3>
+                        <p>Hotels, Hospitals & Office Buildings</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Religious</div>
+                    <div class="portfolio-overlay">
+                        <h3>Religious Structures</h3>
+                        <p>Mosques, Temples & Spiritual Spaces</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Interior</div>
+                    <div class="portfolio-overlay">
+                        <h3>Interior Design</h3>
+                        <p>Complete Interior Solutions</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Renovation</div>
+                    <div class="portfolio-overlay">
+                        <h3>Renovation Services</h3>
+                        <p>Modernize & Redesign Existing Spaces</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 700;">Planning</div>
+                    <div class="portfolio-overlay">
+                        <h3>Project Management</h3>
+                        <p>End-to-End Execution</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing">
+            <div class="section-header">
+                <h2>Subscription Plans</h2>
+                <p>Choose the plan that fits your project needs</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">CONSULTATION</div>
+                    <div class="plan-price">₹5,000<span>/session</span></div>
+                    <div class="plan-description">Perfect for initial project consultation and feasibility study</div>
+                    <ul class="plan-features">
+                        <li>1 Hour Video Consultation</li>
+                        <li>Site Assessment Review</li>
+                        <li>Preliminary Recommendations</li>
+                        <li>Budget Estimation</li>
+                        <li>Project Timeline Overview</li>
+                    </ul>
+                    <button class="btn-primary" style="width: 100%;" onclick="openModal('consultModal')">Book Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">DESIGN BASIC</div>
+                    <div class="plan-price">₹25,000<span>/month</span></div>
+                    <div class="plan-description">For single project design and planning</div>
+                    <ul class="plan-features">
+                        <li>Complete Architectural Design</li>
+                        <li>3D Visualizations (3 Views)</li>
+                        <li>Floor Plans & Elevations</li>
+                        <li>2 Design Revisions</li>
+                        <li>Client Portal Access</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <button class="btn-primary" style="width: 100%;" onclick="openModal('signupModal', 'basic')">Subscribe Now</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="plan-name">PROJECT PRO</div>
+                    <div class="plan-price">₹75,000<span>/month</span></div>
+                    <div class="plan-description">Complete project management with execution support</div>
+                    <ul class="plan-features">
+                        <li>Everything in Design Basic</li>
+                        <li>Unlimited 3D Visualizations</li>
+                        <li>Unlimited Design Revisions</li>
+                        <li>Interior Design Included</li>
+                        <li>Project Progress Tracking</li>
+                        <li>Site Supervision (2 visits/month)</li>
+                        <li>Priority Support (24/7)</li>
+                        <li>Vendor Coordination</li>
+                    </ul>
+                    <button class="btn-primary" style="width: 100%;" onclick="openModal('signupModal', 'pro')">Subscribe Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">RENOVATION</div>
+                    <div class="plan-price">₹40,000<span>/month</span></div>
+                    <div class="plan-description">Specialized renovation and redesign services</div>
+                    <ul class="plan-features">
+                        <li>Existing Structure Analysis</li>
+                        <li>Redesign Proposals</li>
+                        <li>3D Before/After Views</li>
+                        <li>Material Recommendations</li>
+                        <li>4 Design Revisions</li>
+                        <li>Renovation Timeline</li>
+                        <li>Budget Optimization</li>
+                    </ul>
+                    <button class="btn-primary" style="width: 100%;" onclick="openModal('signupModal', 'renovation')">Subscribe Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio" style="background: var(--light);">
+            <div class="section-header">
+                <h2>Our Portfolio</h2>
+                <p>Showcasing excellence in architectural design</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">50-Unit Apartment</div>
+                    <div class="portfolio-overlay">
+                        <h3>Luxury Residential Complex</h3>
+                        <p>Modern Apartments • Mumbai</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">Multi-Specialty Hospital</div>
+                    <div class="portfolio-overlay">
+                        <h3>Healthcare Facility</h3>
+                        <p>Hospital Design • Delhi</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">Boutique Hotel</div>
+                    <div class="portfolio-overlay">
+                        <h3>Luxury Hotel</h3>
+                        <p>Hospitality Design • Goa</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">Grand Mosque</div>
+                    <div class="portfolio-overlay">
+                        <h3>Community Mosque</h3>
+                        <p>Religious Architecture • Lucknow</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">Heritage Temple</div>
+                    <div class="portfolio-overlay">
+                        <h3>Temple Complex</h3>
+                        <p>Traditional Design • Varanasi</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div style="height: 100%; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">Premium Villas</div>
+                    <div class="portfolio-overlay">
+                        <h3>Luxury Villa Collection</h3>
+                        <p>Residential Design • Bangalore</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Client Dashboard -->
+    <div id="clientDashboard" class="dashboard">
+        <div class="dashboard-header">
+            <h1>Welcome, <span id="clientName">Client</span></h1>
+            <p>Manage your projects and track progress</p>
+        </div>
+
+        <div class="dashboard-nav">
+            <button class="active" onclick="switchTab('overview')">Overview</button>
+            <button onclick="switchTab('projects')">My Projects</button>
+            <button onclick="switchTab('uploads')">Upload Files</button>
+            <button onclick="switchTab('consultations')">Consultations</button>
+            <button onclick="switchTab('account')">Account</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Overview Tab -->
+            <div id="overview" class="dashboard-section active">
+                <h2 style="margin-bottom: 2rem;">Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="activeProjects">2</h3>
+                        <p>Active Projects</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalConsultations">5</h3>
+                        <p>Consultations Booked</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="filesUploaded">24</h3>
+                        <p>Files Uploaded</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="subscriptionPlan">Pro</h3>
+                        <p>Current Plan</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 1.5rem;">Recent Activity</h3>
+                <div class="project-list">
+                    <div class="project-card">
+                        <span class="project-status active">Active</span>
+                        <div class="project-info">
+                            <h3>Residential Villa Project</h3>
+                            <p>Started: Jan 15, 2024 • Last Updated: 2 days ago</p>
+                        </div>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                    <div class="project-card">
+                        <span class="project-status active">Active</span>
+                        <div class="project-info">
+                            <h3>Office Interior Renovation</h3>
+                            <p>Started: Feb 1, 2024 • Last Updated: 5 days ago</p>
+                        </div>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects" class="dashboard-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>My Projects</h2>
+                    <button class="btn-primary" onclick="openModal('newProjectModal')">+ New Project</button>
+                </div>
+
+                <div class="project-list">
+                    <div class="project-card">
+                        <span class="project-status active">Active</span>
+                        <div class="project-info">
+                            <h3>Residential Villa Project</h3>
+                            <p>3BHK Villa Design • Plot Size: 2400 sq ft • Budget: ₹50 Lakhs</p>
+                            <p style="margin-top: 0.5rem;"><strong>Progress:</strong> Design Phase - 60% Complete</p>
+                        </div>
+                        <div>
+                            <button class="btn-secondary" style="margin-bottom: 0.5rem; width: 150px;">View Files</button>
+                            <button class="btn-primary" style="width: 150px;">Upload Update</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-status active">Active</span>
+                        <div class="project-info">
+                            <h3>Office Interior Renovation</h3>
+                            <p>Commercial Interior • Area: 1800 sq ft • Budget: ₹25 Lakhs</p>
+                            <p style="margin-top: 0.5rem;"><strong>Progress:</strong> Approval Stage - 40% Complete</p>
+                        </div>
+                        <div>
+                            <button class="btn-secondary" style="margin-bottom: 0.5rem; width: 150px;">View Files</button>
+                            <button class="btn-primary" style="width: 150px;">Upload Update</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-status completed">Completed</span>
+                        <div class="project-info">
+                            <h3>Apartment Consultation</h3>
+                            <p>2BHK Flat Interior • Area: 1200 sq ft</p>
+                            <p style="margin-top: 0.5rem;"><strong>Completed:</strong> March 2024</p>
+                        </div>
+                        <div>
+                            <button class="btn-secondary" style="width: 150px;">View Archive</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uploads Tab -->
+            <div id="uploads" class="dashboard-section">
+                <h2 style="margin-bottom: 2rem;">Upload Project Files</h2>
+                
+                <div class="form-group">
+                    <label>Select Project</label>
+                    <select>
+                        <option>Residential Villa Project</option>
+                        <option>Office Interior Renovation</option>
+                    </select>
+                </div>
+
+                <div class="file-upload-area" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" multiple accept="image/*,.pdf,.dwg" onchange="handleFileSelect(event)">
+                    <h3 style="margin-bottom: 1rem;">📁 Drop files here or click to upload</h3>
+                    <p style="color: var(--gray);">Support for images, PDFs, and CAD files (Max 10MB each)</p>
+                </div>
+
+                <h3 style="margin-bottom: 1rem;">Recently Uploaded</h3>
+                <div class="uploaded-files" id="uploadedFiles">
+                    <div class="file-preview">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect fill='%23c9a961' width='200' height='200'/><text x='50%' y='50%' fill='white' font-size='60' text-anchor='middle' dy='.3em'>📐</text></svg>" alt="File">
+                        <button class="file-remove">×</button>
+                    </div>
+                    <div class="file-preview">
+                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect fill='%232d5a4d' width='200' height='200'/><text x='50%' y='50%' fill='white' font-size='60' text-anchor='middle' dy='.3em'>📄</text></svg>" alt="File">
+                        <button class="file-remove">×</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--light); border-left: 4px solid var(--accent);">
+                    <h4 style="margin-bottom: 0.5rem;">💡 Upload Tips</h4>
+                    <ul style="margin-left: 1.5rem; color: var(--gray);">
+                        <li>Upload site photos from multiple angles</li>
+                        <li>Include measurement details and sketches</li>
+                        <li>Share reference images of styles you like</li>
+                        <li>Our architect will review and provide feedback within 48 hours</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Consultations Tab -->
+            <div id="consultations" class="dashboard-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>My Consultations</h2>
+                    <button class="btn-primary" onclick="openModal('consultModal')">Book New Consultation</button>
+                </div>
+
+                <div class="project-list">
+                    <div class="project-card">
+                        <span class="project-status pending">Upcoming</span>
+                        <div class="project-info">
+                            <h3>Project Review Meeting</h3>
+                            <p>📅 April 20, 2024 at 10:00 AM • Duration: 1 hour</p>
+                            <p style="margin-top: 0.5rem;">Topic: Villa design finalization and material selection</p>
+                        </div>
+                        <div>
+                            <button class="btn-secondary" style="margin-bottom: 0.5rem; width: 150px;">Reschedule</button>
+                            <button class="btn-primary" style="width: 150px;">Join Meeting</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <span class="project-status completed">Completed</span>
+                        <div class="project-info">
+                            <h3>Initial Consultation</h3>
+                            <p>📅 March 15, 2024 • Duration: 1 hour</p>
+                            <p style="margin-top: 0.5rem;">Notes available in project files</p>
+                        </div>
+                        <div>
+                            <button class="btn-secondary" style="width: 150px;">View Notes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Tab -->
+            <div id="account" class="dashboard-section">
+                <h2 style="margin-bottom: 2rem;">Account Settings</h2>
+
+                <div style="max-width: 600px;">
+                    <h3 style="margin-bottom: 1.5rem;">Personal Information</h3>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" value="Rajesh Kumar">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" value="rajesh@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" value="+91 98765 43210">
+                    </div>
+                    <button class="btn-primary">Update Profile</button>
+
+                    <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+
+                    <h3 style="margin-bottom: 1.5rem;">Subscription Details</h3>
+                    <div style="background: var(--light); padding: 2rem; margin-bottom: 1.5rem;">
+                        <h4>Current Plan: PROJECT PRO</h4>
+                        <p style="color: var(--gray); margin: 0.5rem 0;">₹75,000/month • Renews on May 1, 2024</p>
+                        <p style="color: var(--gray);">2 active projects • Unlimited revisions</p>
+                    </div>
+                    <button class="btn-secondary" style="margin-right: 1rem;">Change Plan</button>
+                    <button class="btn-secondary">Cancel Subscription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+            <h2>Client Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--gray);">
+                    Don't have an account? <a href="#" style="color: var(--secondary); font-weight: 600;" onclick="closeModal('loginModal'); openModal('signupModal');">Sign Up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signupModal')">&times;</button>
+            <h2>Create Account</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" required placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" required placeholder="Doe">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" required placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="Create a strong password">
+                </div>
+                <div class="form-group">
+                    <label>Select Plan</label>
+                    <select id="planSelect" required>
+                        <option value="">Choose a subscription plan</option>
+                        <option value="basic">Design Basic - ₹25,000/month</option>
+                        <option value="pro">Project Pro - ₹75,000/month</option>
+                        <option value="renovation">Renovation - ₹40,000/month</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Create Account & Subscribe</button>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--gray);">
+                    Already have an account? <a href="#" style="color: var(--secondary); font-weight: 600;" onclick="closeModal('signupModal'); openModal('loginModal');">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Consultation Booking Modal -->
+    <div id="consultModal" class="modal">
+        <div class="modal-content" style="max-width: 1000px;">
+            <button class="modal-close" onclick="closeModal('consultModal')">&times;</button>
+            <h2>Book Consultation</h2>
+            
+            <div class="payment-summary">
+                <h3>Consultation Details</h3>
+                <p style="margin-bottom: 1rem;">1 Hour Video Session with Expert Architect</p>
+                <div class="price">₹5,000</div>
+            </div>
+
+            <form onsubmit="handleConsultation(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" required placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" required placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Type</label>
+                        <select required>
+                            <option value="">Select Project Type</option>
+                            <option>Residential</option>
+                            <option>Commercial</option>
+                            <option>Renovation</option>
+                            <option>Interior Design</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Date</label>
+                    <div class="consultation-calendar" id="calendar"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Time Slot</label>
+                    <div class="time-slots" id="timeSlots"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Brief Description</label>
+                    <textarea required placeholder="Tell us about your project requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Project Modal -->
+    <div id="newProjectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('newProjectModal')">&times;</button>
+            <h2>Create New Project</h2>
+            <form onsubmit="handleNewProject(event)">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" required placeholder="e.g., My Dream Villa">
+                </div>
+                <div class="form-group">
+                    <label>Project Type</label>
+                    <select required>
+                        <option value="">Select Type</option>
+                        <option>Residential Building</option>
+                        <option>Apartment</option>
+                        <option>Villa</option>
+                        <option>Commercial Building</option>
+                        <option>Hotel</option>
+                        <option>Hospital</option>
+                        <option>Mosque</option>
+                        <option>Temple</option>
+                        <option>Interior Design</option>
+                        <option>Renovation</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Plot/Area Size (sq ft)</label>
+                        <input type="number" required placeholder="2400">
+                    </div>
+                    <div class="form-group">
+                        <label>Budget (₹ Lakhs)</label>
+                        <input type="number" required placeholder="50">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea required placeholder="Describe your vision, requirements, and any specific needs..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" required placeholder="City, State">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Create Project</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal(modalId, plan) {
+            document.getElementById(modalId).classList.add('active');
+            if (plan && modalId === 'signupModal') {
+                document.getElementById('planSelect').value = plan;
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Navigation
+        function showHome() {
+            document.getElementById('mainContent').style.display = 'block';
+            document.getElementById('clientDashboard').classList.remove('active');
+            document.getElementById('mainNav').style.display = 'flex';
+        }
+
+        function showDashboard() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('clientDashboard').classList.add('active');
+            document.getElementById('mainNav').style.display = 'none';
+        }
+
+        function logout() {
+            showHome();
+            alert('Logged out successfully!');
+        }
+
+        // Dashboard Tabs
+        function switchTab(tabName) {
+            // Remove active class from all sections
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.dashboard-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Form Handlers
+        function handleLogin(e) {
+            e.preventDefault();
+            closeModal('loginModal');
+            showDashboard();
+            document.getElementById('clientName').textContent = 'Rajesh Kumar';
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            closeModal('signupModal');
+            showDashboard();
+            alert('Account created successfully! Welcome to ArchitectPro.');
+        }
+
+        function handleConsultation(e) {
+            e.preventDefault();
+            closeModal('consultModal');
+            alert('Consultation booked successfully! Payment link sent to your email.');
+        }
+
+        function handleNewProject(e) {
+            e.preventDefault();
+            closeModal('newProjectModal');
+            alert('Project created successfully! Our architect will review and contact you within 24 hours.');
+        }
+
+        // File Upload
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            const container = document.getElementById('uploadedFiles');
+            
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'file-preview';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="${file.name}">
+                        <button class="file-remove" onclick="this.parentElement.remove()">×</button>
+                    `;
+                    container.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Calendar Generation
+        function generateCalendar() {
+            const calendar = document.getElementById('calendar');
+            const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            
+            // Add day headers
+            days.forEach(day => {
+                const header = document.createElement('div');
+                header.style.fontWeight = 'bold';
+                header.style.textAlign = 'center';
+                header.style.padding = '0.5rem';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+
+            // Add dates (next 35 days)
+            for (let i = 1; i <= 35; i++) {
+                const day = document.createElement('div');
+                day.className = 'calendar-day';
+                if (i < 5) day.classList.add('disabled');
+                day.textContent = i;
+                day.onclick = function() {
+                    if (!this.classList.contains('disabled')) {
+                        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                        this.classList.add('selected');
+                        generateTimeSlots();
+                    }
+                };
+                calendar.appendChild(day);
+            }
+        }
+
+        // Time Slots Generation
+        function generateTimeSlots() {
+            const slotsContainer = document.getElementById('timeSlots');
+            slotsContainer.innerHTML = '';
+            
+            const slots = [
+                '09:00 AM', '10:00 AM', '11:00 AM', '02:00 PM', 
+                '03:00 PM', '04:00 PM', '05:00 PM'
+            ];
+
+            slots.forEach((time, index) => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                if (index === 2) slot.classList.add('booked');
+                slot.textContent = time;
+                slot.onclick = function() {
+                    if (!this.classList.contains('booked')) {
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        this.classList.add('selected');
+                    }
+                };
+                slotsContainer.appendChild(slot);
+            });
+        }
+
+        // Initialize calendar when consultation modal opens
+        document.getElementById('consultModal').addEventListener('click', function(e) {
+            if (e.target === this && !document.getElementById('calendar').children.length) {
+                generateCalendar();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('onclick')) return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close modals on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
